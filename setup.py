@@ -104,7 +104,8 @@ if missing("libxml2-py.c") or missing("libxml2.py"):
             import generator
     except:
         print("failed to find and generate stubs for libxml2, aborting ...")
-        print(sys.exc_type, sys.exc_value)
+        sys_exc_type, sys_exc_value, sys_exc_traceback = sys.exc_info()
+        print(sys_exc_type, sys_exc_value)
         sys.exit(1)
 
     head = open("libxml.py", "r")
@@ -130,7 +131,8 @@ if missing("libxslt-py.c") or missing("libxslt.py"):
             import xsltgenerator
         except:
             print("failed to generate stubs for libxslt, aborting ...")
-            print(sys.exc_type, sys.exc_value)
+            sys_exc_type, sys_exc_value, sys_exc_traceback = sys.exc_info()
+            print(sys_exc_type, sys_exc_value)
         else:
             head = open("libxsl.py", "r")
             generated = open("libxsltclass.py", "r")
